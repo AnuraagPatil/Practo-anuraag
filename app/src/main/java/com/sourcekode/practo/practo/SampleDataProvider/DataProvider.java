@@ -1,5 +1,6 @@
 package com.sourcekode.practo.practo.SampleDataProvider;
 
+import com.sourcekode.practo.practo.ModalData.DoctorsData;
 import com.sourcekode.practo.practo.ModalData.Specialities;
 import com.sourcekode.practo.practo.R;
 
@@ -12,10 +13,14 @@ public class DataProvider {
     
     public static List<Specialities> specialities;
     public static Map<String,Specialities> specialitiesMap;
-    
+    public static List<DoctorsData> doctorsList;
+    public static Map<String,DoctorsData> doctorsMap;
+
     static {
         specialities = new ArrayList<Specialities>();
         specialitiesMap = new HashMap<String, Specialities>();
+        doctorsList = new ArrayList<DoctorsData>();
+        doctorsMap = new HashMap<String,DoctorsData>();
 
         specialities.add(new Specialities("Audiologist", R.drawable.audiologist));
         specialities.add(new Specialities("Allergist",R.drawable.allergist));
@@ -47,5 +52,23 @@ public class DataProvider {
         specialities.add(new Specialities("Rheumatologist",R.drawable.rheumatologist));
         specialities.add(new Specialities("Surgeon",R.drawable.surgeon));
         specialities.add(new Specialities("Urologist",R.drawable.urologist));
+
+        doctorsList.add(new DoctorsData(R.drawable.plastic_surgeon,"DoctorName1","prctise",
+                "street","locality","rating val","fees"));
+        doctorsList.add(new DoctorsData(R.drawable.plastic_surgeon,"DoctorName2","prctise",
+                "street","locality","rating val","fees"));
+        doctorsList.add(new DoctorsData(R.drawable.plastic_surgeon,"DoctorName3","prctise",
+                "street","locality","rating val","fees"));
+        doctorsList.add(new DoctorsData(R.drawable.plastic_surgeon,"DoctorName4","prctise",
+                "street","locality","rating val","fees"));
+        doctorsList.add(new DoctorsData(R.drawable.plastic_surgeon,"DoctorName5","prctise",
+                "street","locality","rating val","fees"));
+        doctorsList.add(new DoctorsData(R.drawable.plastic_surgeon,"DoctorName6","prctise",
+                "street","locality","rating val","fees"));
+        doctorsList.add(new DoctorsData(R.drawable.plastic_surgeon,"DoctorName7","prctise",
+                "street","locality","rating val","fees"));
+        doctorsList.add(new DoctorsData(R.drawable.plastic_surgeon,"DoctorName8","prctise",
+                "street","locality","rating val","fees"));
+
     }
 }
