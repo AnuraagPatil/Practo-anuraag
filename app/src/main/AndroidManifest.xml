@@ -20,8 +20,8 @@
             android:name=".DrawerNavigationActivity"
             android:label="@string/title_activity_drawer_navigation"
             android:parentActivityName=".SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Doctors"></activity>
     </application>
 
 </manifest>

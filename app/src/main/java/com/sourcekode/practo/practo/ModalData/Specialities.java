@@ -1,16 +1,15 @@
-package com.sourcekode.practo.practo;
+package com.sourcekode.practo.practo.ModalData;
 
-/**
- * Created by Dhanvesh on 2/27/2018.
- */
 
-public class Doctor  {
+public class Specialities {
 
     private String Title;
     private int Thumbnail;
 
+    public Specialities() {
+    }
 
-    public Doctor(String title, int thumbnail) {
+    public Specialities(String title, int thumbnail) {
         Title = title;
         Thumbnail = thumbnail;
     }
@@ -30,4 +29,5 @@ public class Doctor  {
     public void setThumbnail(int thumbnail) {
         Thumbnail = thumbnail;
     }
+
 }
