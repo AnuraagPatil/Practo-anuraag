@@ -43,21 +43,20 @@ public class RecyclerViewAdapterForDocList extends RecyclerView.Adapter<Recycler
 
         final DoctorsData doctorsData  = mData.get(position);
 
-        holder.profile_pic.setImageResource(mData.get(position).getProfile_pic());
+     /*   holder.profile_pic.setImageResource(mData.get(position).getProfile_pic());
         holder.doctor_name.setText(mData.get(position).getDoctor_name());
         holder.practise.setText(mData.get(position).getPractise());
         holder.fees.setText(mData.get(position).getFees());
         holder.locality.setText(mData.get(position).getLocality());
         holder.street.setText(mData.get(position).getStreet());
-        holder.rating_val.setText(mData.get(position).getRating());
+        holder.rating_val.setText(mData.get(position).getRating());*/
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "Clicked on "+doctorsData.getDoctor_name(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(mContext,Doctors.class);
-//                intent.putExtra(SPECILITY_KEY,doctorsData.getTitle());
-//                mContext.startActivity(intent);
+               Intent intent = new Intent(mContext,Profile.class);
+               mContext.startActivity(intent);
             }
         });
     }
@@ -87,7 +86,7 @@ public class RecyclerViewAdapterForDocList extends RecyclerView.Adapter<Recycler
             practise =itemView.findViewById(R.id.txt_practise_name);
             locality = itemView.findViewById(R.id.txt_locality);
             street = itemView.findViewById(R.id.txt_street);
-            fees = itemView.findViewById(R.id.txt_fees_value);
+            fees = itemView.findViewById(R.id.txt_fees);
             rating_val = itemView.findViewById(R.id.txt_rating_val);
         }
     }
