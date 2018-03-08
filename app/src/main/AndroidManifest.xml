@@ -22,6 +22,7 @@
             android:parentActivityName=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Doctors"></activity>
+        <activity android:name=".Profile"></activity>
     </application>
 
 </manifest>
