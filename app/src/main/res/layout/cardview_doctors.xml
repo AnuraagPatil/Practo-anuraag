@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="5dp"
-    app:cardElevation="@dimen/cardview_default_elevation">
+    app:cardElevation="2dp">
 
     <TableLayout
         android:id="@+id/main_table"
@@ -33,7 +33,7 @@
                     android:id="@+id/txt_doctor_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Doctor Name"
+                    android:text="Doctor NamE"
                     android:textSize="24dp" />
 
                 <LinearLayout
