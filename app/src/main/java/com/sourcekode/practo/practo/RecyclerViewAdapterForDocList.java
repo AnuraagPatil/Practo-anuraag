@@ -51,6 +51,7 @@ public class RecyclerViewAdapterForDocList extends RecyclerView.Adapter<Recycler
         holder.street.setText(mData.get(position).getStreet());
         holder.rating_val.setText(mData.get(position).getRating());*/
 
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
