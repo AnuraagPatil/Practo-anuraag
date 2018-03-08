@@ -71,11 +71,8 @@ public class RecyclerViewAdapterForDocList extends RecyclerView.Adapter<Recycler
 
         TextView doctor_name;
         ImageView profile_pic;
-        TextView practise;
-        TextView locality;
-        TextView street;
-        TextView fees;
-        TextView rating_val;
+        TextView address;
+        TextView city;
         View mView;
 
         public MyViewHolder(View itemView) {
@@ -84,11 +81,12 @@ public class RecyclerViewAdapterForDocList extends RecyclerView.Adapter<Recycler
             mView = itemView;
             doctor_name = (TextView)itemView.findViewById(R.id.txt_doctor_name);
             profile_pic = (ImageView) itemView.findViewById(R.id.profile_image);
-            practise =itemView.findViewById(R.id.txt_practise_name);
-            locality = itemView.findViewById(R.id.txt_locality);
-            street = itemView.findViewById(R.id.txt_street);
-            fees = itemView.findViewById(R.id.txt_fees);
-            rating_val = itemView.findViewById(R.id.txt_rating_val);
+            address = itemView.findViewById(R.id.txt_address);
+            city = itemView.findViewById(R.id.txt_city);
+
+
+
+
         }
     }
 
