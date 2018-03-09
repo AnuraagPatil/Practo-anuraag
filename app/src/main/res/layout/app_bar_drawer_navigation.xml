@@ -22,5 +22,4 @@
 
     <include layout="@layout/content_drawer_navigation" />
 
-
 </android.support.design.widget.CoordinatorLayout>
