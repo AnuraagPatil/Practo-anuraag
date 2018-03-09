@@ -109,7 +109,7 @@
                     android:id="@+id/tablayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:tabIndicatorColor="#5AEF4C"
+                    app:tabIndicatorColor="#000"
                     app:tabMode="scrollable"
                     app:tabTextColor="#000" />
 
