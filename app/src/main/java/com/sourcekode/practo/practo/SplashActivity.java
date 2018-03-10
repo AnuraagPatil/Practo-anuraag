@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 public class SplashActivity extends AppCompatActivity {
 
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,13 +17,24 @@ public class SplashActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        sessionManager = new SessionManager(this);
+
+        if (sessionManager.getFirstTime()) {
+            Intent mainIntent = new Intent(SplashActivity.this, DrawerNavigationActivity.class);
+            startActivity(mainIntent);
+            finish();
+        } else {
+            Intent mainIntent = new Intent(SplashActivity.this, SignIn.class);
+            startActivity(mainIntent);
+            finish();
+        }
+
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Thread.sleep(1000);
-                    Intent i = new Intent(SplashActivity.this,DrawerNavigationActivity.class);
-                    startActivity(i);
+
                     finish();
 
                 } catch (InterruptedException e) {
@@ -31,7 +44,6 @@ public class SplashActivity extends AppCompatActivity {
         });
 
         t.start();
-
 
     }
 }

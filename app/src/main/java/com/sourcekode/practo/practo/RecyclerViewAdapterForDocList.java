@@ -17,7 +17,6 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-
 public class RecyclerViewAdapterForDocList extends RecyclerView.Adapter<RecyclerViewAdapterForDocList.MyViewHolder> {
 
     private Context mContext ;
@@ -84,11 +83,6 @@ public class RecyclerViewAdapterForDocList extends RecyclerView.Adapter<Recycler
             address = itemView.findViewById(R.id.txt_address);
             city = itemView.findViewById(R.id.txt_city);
 
-
-
-
         }
     }
-
-
 }

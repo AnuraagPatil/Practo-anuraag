@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "781329475039",
+    "firebase_url": "https://practo-141f0.firebaseio.com",
+    "project_id": "practo-141f0",
+    "storage_bucket": "practo-141f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781329475039:android:2841432b73c24c9f",
+        "android_client_info": {
+          "package_name": "com.sourcekode.practo.practo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781329475039-0sqpdbfom0qls40dog5920g4bn7hq4dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3cbFhMum2LiF1dHGvmgrob5IrqU0V9Ag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

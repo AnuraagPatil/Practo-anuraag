@@ -6,4 +6,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="status_signincancelled">SignInCancelled</string>
+    <string name="status_signinfail">SignInFailed</string>
+    <string name="status_nullresult">Null Result</string>
+    <string name="status_signedin">Status Signin</string>
+    <string name="status_notconnected">NotConnected</string>
+    <string name="status_notsignedin">NotSigned in</string>
 </resources>
