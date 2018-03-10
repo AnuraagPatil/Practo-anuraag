@@ -1,35 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="@drawable/border"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
+
         <ImageView
-            android:layout_margin="5dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/experiance"/>
-    <TextView
-        android:id="@+id/txt_exp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Experiance :"
-        android:textSize="20sp"/>
+            android:layout_margin="5dp"
+            android:src="@drawable/experiance" />
+
+        <TextView
+            android:id="@+id/txt_exp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Experiance :"
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/exp_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5yrs"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
     <LinearLayout
+        android:padding="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="80dp"
+        android:background="@drawable/border"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
         <ImageView
             android:layout_margin="5dp"
             android:layout_width="20dp"
@@ -49,9 +62,13 @@
             android:textSize="20sp"/>
     </LinearLayout>
     <LinearLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="@drawable/border"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
