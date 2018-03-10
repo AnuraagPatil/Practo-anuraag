@@ -2,8 +2,10 @@
 <LinearLayout
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-    android:padding="2dp"
-    android:background="@color/colorPrimary"
+    android:paddingTop="2dp"
+    android:paddingLeft="1dp"
+    android:paddingRight="1dp"
+    android:background="#C0C0C0"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 <android.support.v7.widget.CardView
@@ -99,15 +101,9 @@
 
                 </LinearLayout>
             </LinearLayout>
-
-
-
         </TableRow>
-
-
-
-
     </TableLayout>
+
 
 </android.support.v7.widget.CardView>
 

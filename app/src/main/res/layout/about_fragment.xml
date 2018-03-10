@@ -10,10 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:background="@drawable/border"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp">
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="20dp"
@@ -35,14 +32,17 @@
             android:text="5yrs"
             android:textSize="20sp" />
     </LinearLayout>
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+
+
     <LinearLayout
         android:padding="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@drawable/border"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp">
+        android:layout_height="80dp">
         <ImageView
             android:layout_margin="5dp"
             android:layout_width="20dp"
@@ -61,14 +61,16 @@
             android:text="1000/-"
             android:textSize="20sp"/>
     </LinearLayout>
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+
     <LinearLayout
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:background="@drawable/border"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp">
+        android:orientation="horizontal">
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -80,4 +82,8 @@
         android:text="Services"
         android:textSize="20sp"/>
     </LinearLayout>
+         <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
 </LinearLayout>
