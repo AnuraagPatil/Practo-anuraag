@@ -28,7 +28,7 @@ public class SessionManager {
     }
 
     public boolean getFirstTime() {
-        return pref.getBoolean(FIRSTTIME, false);
+        return pref.getBoolean(FIRSTTIME, true);
     }
 
 }

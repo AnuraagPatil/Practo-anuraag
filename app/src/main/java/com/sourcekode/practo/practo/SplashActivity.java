@@ -19,22 +19,11 @@ public class SplashActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
 
-        if (sessionManager.getFirstTime()) {
-            Intent mainIntent = new Intent(SplashActivity.this, DrawerNavigationActivity.class);
-            startActivity(mainIntent);
-            finish();
-        } else {
-            Intent mainIntent = new Intent(SplashActivity.this, SignIn.class);
-            startActivity(mainIntent);
-            finish();
-        }
-
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Thread.sleep(1000);
-
                     finish();
 
                 } catch (InterruptedException e) {
@@ -45,5 +34,15 @@ public class SplashActivity extends AppCompatActivity {
 
         t.start();
 
+        if (sessionManager.getFirstTime()) {
+            Intent mainIntent = new Intent(SplashActivity.this, SignIn.class);
+            startActivity(mainIntent);
+            finish();
+
+        } else {
+            Intent mainIntent = new Intent(SplashActivity.this, DrawerNavigationActivity.class);
+            startActivity(mainIntent);
+            finish();
+        }
     }
 }
