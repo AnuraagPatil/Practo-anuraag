@@ -110,8 +110,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:tabIndicatorColor="#000"
-                    app:tabMode="scrollable"
-                    app:tabTextColor="#000" />
+                    app:tabMode="fixed"
+                    app:tabTextColor="#000"
+                    app:tabMaxWidth="0dp"
+                   />
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewpager"
