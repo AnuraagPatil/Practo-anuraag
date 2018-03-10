@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "781329475039-avd2qsl3a7amud095vesd4400rho06ot.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sourcekode.practo.practo",
+            "certificate_hash": "a3de466423170be169e500bbdda7f4fba2684354"
+          }
+        },
+        {
           "client_id": "781329475039-0sqpdbfom0qls40dog5920g4bn7hq4dm.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781329475039-0sqpdbfom0qls40dog5920g4bn7hq4dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

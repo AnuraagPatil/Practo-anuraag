@@ -12,4 +12,6 @@
     <string name="status_signedin">Status Signin</string>
     <string name="status_notconnected">NotConnected</string>
     <string name="status_notsignedin">NotSigned in</string>
+    <string name="defaultSignIn">781329475039-avd2qsl3a7amud095vesd4400rho06ot.apps.googleusercontent.com</string>
+
 </resources>

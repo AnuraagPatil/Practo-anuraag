@@ -44,10 +44,6 @@ public class SignIn extends AppCompatActivity implements
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
 
-        Intent intent = new Intent(this, DrawerNavigationActivity.class);
-        //intent.putExtra(LOGINED_NAME, acct.getDisplayName());
-        startActivity(intent);
-
     }
 
     private void signOut() {
@@ -88,9 +84,9 @@ public class SignIn extends AppCompatActivity implements
                 m_tvDispName.setText(acct.getDisplayName());
                 m_tvEmail.setText(acct.getEmail());
 
-//                Intent intent = new Intent(this, DrawerNavigationActivity.class);
-//                intent.putExtra(LOGINED_NAME, acct.getDisplayName());
-//                startActivity(intent);
+                Intent intent = new Intent(this, DrawerNavigationActivity.class);
+                intent.putExtra(LOGINED_NAME, acct.getDisplayName());
+                startActivity(intent);
 
             } catch (NullPointerException e) {
                 Log.d(TAG, "Error retrieving some account information");
