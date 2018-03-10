@@ -40,8 +40,10 @@ public class SignIn extends AppCompatActivity implements
 
     private void startSignIn() {
         // TODO: Create sign-in intent and begin auth flow
-        sessionManager = new SessionManager(this);
-        sessionManager.setFirsttime(true);
+
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
+
     }
 
     private void signOut() {
@@ -75,16 +77,17 @@ public class SignIn extends AppCompatActivity implements
             GoogleSignInAccount acct = result.getSignInAccount();
             m_tvStatus.setText(R.string.status_signedin);
 
-            Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-            startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
-
-            Intent intent = new Intent(this, DrawerNavigationActivity.class);
-            intent.putExtra(LOGINED_NAME, acct.getDisplayName());
-            startActivity(intent);
+            sessionManager = new SessionManager(this);
+            sessionManager.setFirsttime(true);
 
             try {
                 m_tvDispName.setText(acct.getDisplayName());
                 m_tvEmail.setText(acct.getEmail());
+
+                Intent intent = new Intent(this, DrawerNavigationActivity.class);
+                intent.putExtra(LOGINED_NAME, acct.getDisplayName());
+                startActivity(intent);
+
             } catch (NullPointerException e) {
                 Log.d(TAG, "Error retrieving some account information");
             }
