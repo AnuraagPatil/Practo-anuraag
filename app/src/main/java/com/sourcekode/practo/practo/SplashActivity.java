@@ -36,11 +36,12 @@ public class SplashActivity extends AppCompatActivity {
         t.start();
 
         if (sessionManager.getFirstTime()) {
-            Intent mainIntent = new Intent(SplashActivity.this, DrawerNavigationActivity.class);
+            Intent mainIntent = new Intent(SplashActivity.this, SignIn.class);
             startActivity(mainIntent);
             finish();
+
         } else {
-            Intent mainIntent = new Intent(SplashActivity.this, SignIn.class);
+            Intent mainIntent = new Intent(SplashActivity.this, DrawerNavigationActivity.class);
             startActivity(mainIntent);
             finish();
         }
