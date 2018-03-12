@@ -41,8 +41,13 @@ public class SignIn extends AppCompatActivity implements
     private void startSignIn() {
         // TODO: Create sign-in intent and begin auth flow
 
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
+        Intent intent = new Intent(this, DrawerNavigationActivity.class);
+//        intent.putExtra(LOGINED_NAME, acct.getDisplayName());
+        intent.putExtra(LOGINED_NAME, "Login Name");
+        startActivity(intent);
+
+//        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+//        startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
 
     }
 
