@@ -7,4 +7,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="cardview_element_basic">8dp</dimen>
     <dimen name="table_row_ele_margin">6dp</dimen>
+    <dimen name="item_offset">5dp</dimen>
 </resources>

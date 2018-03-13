@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.sourcekode.practo.practo.ModalData.Specialities;
 import com.sourcekode.practo.practo.SampleDataProvider.DataProvider;
+import com.sourcekode.practo.practo.util.ItemOffsetDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,8 @@ public class DrawerNavigationActivity extends AppCompatActivity
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview_id);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,DataProvider.specialities);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(this, R.dimen.item_offset);
+        recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setAdapter(myAdapter);
     }
 
