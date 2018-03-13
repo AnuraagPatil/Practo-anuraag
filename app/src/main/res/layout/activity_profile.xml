@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
     android:id="@+id/cardview_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,8 +16,7 @@
 
         <TableRow
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:background="@drawable/ic_launcher_background">
+            android:layout_width="wrap_content">
             <LinearLayout
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -25,23 +24,18 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/view2"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/view2"
-                    app:cardCornerRadius="10dp"
-                    android:layout_centerHorizontal="true"
                     android:innerRadius="0dp"
                     android:shape="rectangle"
                     android:thicknessRatio="1.0"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp">
+                    app:cardCornerRadius="10dp"
+                    android:elevation="10dp">
 
                     <ImageView
 
@@ -49,20 +43,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-
                         android:adjustViewBounds="true"
+                        android:background="@color/place_autocomplete_prediction_secondary_text"
                         android:cropToPadding="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/cardiologist" />
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_launcher_foreground" />
                 </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/table_row_ele_margin"
                 android:gravity="left"
+                android:padding="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -70,6 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Doctor Name"
+                    android:layout_margin="2dp"
                     android:textSize="20sp" />
 
 
@@ -77,14 +73,16 @@
                     android:id="@+id/txt_qulification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="qualification"
+                    android:text="Qualification"
+                    android:layout_margin="2dp"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="category"
+                    android:text="Category"
+                    android:layout_margin="2dp"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -101,7 +99,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <android.support.design.widget.TabLayout
@@ -109,22 +106,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:tabIndicatorColor="#000"
-                    app:tabMode="fixed"
-                    app:tabTextColor="#000"
                     app:tabMaxWidth="0dp"
-                   />
+                    app:tabMode="fixed"
+                    app:tabTextColor="#000" />
 
                 <android.support.v4.view.ViewPager
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
-                    android:layout_weight="1" />
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1">
 
+                </android.support.v4.view.ViewPager>
 
             </LinearLayout>
+
+
+
         </TableRow>
+
     </TableLayout>
+
+
 
 </android.support.v7.widget.CardView>
