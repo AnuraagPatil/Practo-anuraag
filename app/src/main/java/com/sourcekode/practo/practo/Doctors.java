@@ -20,6 +20,7 @@ public class Doctors extends AppCompatActivity {
         setTitle(Speciality);
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview_doc_list);
+
         RecyclerViewAdapterForDocList myAdapter = new RecyclerViewAdapterForDocList(this, DataProvider.doctorsList);
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         recyclerView.setAdapter(myAdapter);
