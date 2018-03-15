@@ -23,7 +23,6 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/time_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="1"
@@ -48,7 +47,6 @@
             android:layout_height="20dp"
             android:src="@drawable/address"/>
     <TextView
-        android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Address"
@@ -70,7 +68,6 @@
             android:layout_height="20dp"
             android:src="@drawable/location"/>
     <TextView
-        android:id="@+id/location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Location"
