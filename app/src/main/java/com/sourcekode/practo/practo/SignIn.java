@@ -77,7 +77,7 @@ public class SignIn extends AppCompatActivity implements
                 });
     }*/
 
-    private void signInResultHandler(GoogleSignInResult result) {
+   /* private void signInResultHandler(GoogleSignInResult result) {
         if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
             m_tvStatus.setText(R.string.status_signedin);
@@ -107,7 +107,7 @@ public class SignIn extends AppCompatActivity implements
                 m_tvStatus.setText(R.string.status_nullresult);
             }
         }
-    }
+    }*/
 
     // *************************************************
     // -------- ANDROID ACTIVITY LIFECYCLE METHODS
@@ -153,10 +153,10 @@ public class SignIn extends AppCompatActivity implements
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RES_CODE_SIGN_IN) {
+     /*   if (requestCode == RES_CODE_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             signInResultHandler(result);
-        }
+        }*/
     }
 
     // *************************************************
