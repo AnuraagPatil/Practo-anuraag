@@ -67,29 +67,22 @@
         android:textSize="24sp"
         android:layout_toRightOf="@+id/tvEmailLabel" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Disconnect"
-        android:id="@+id/btnDisconnect"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Out"
         android:id="@+id/btnSignOut"
-        android:layout_above="@+id/btnDisconnect"
         android:layout_centerHorizontal="true" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btnSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnSignOut"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:layout_margin="10dp" />
 
 </RelativeLayout>
 

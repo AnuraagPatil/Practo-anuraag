@@ -20,7 +20,6 @@ android {
 }
 
 dependencies {
-    compile 'io.github.yavski:fab-speed-dial:1.0.6'
     compile 'com.android.support:multidex:1.0.3'
     compile 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
     implementation fileTree(dir: 'libs', include: ['*.jar'])

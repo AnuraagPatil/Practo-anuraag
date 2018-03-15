@@ -64,7 +64,7 @@ public class SignIn extends AppCompatActivity implements
                 });
     }
 
-    private void disconnect() {
+/*    private void disconnect() {
         // TODO: Disconnect this account completely and update UI
         Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
@@ -75,7 +75,7 @@ public class SignIn extends AppCompatActivity implements
                         m_tvDispName.setText("");
                     }
                 });
-    }
+    }*/
 
     private void signInResultHandler(GoogleSignInResult result) {
         if (result.isSuccess()) {
@@ -123,9 +123,8 @@ public class SignIn extends AppCompatActivity implements
 
         findViewById(R.id.btnSignIn).setOnClickListener(this);
         findViewById(R.id.btnSignOut).setOnClickListener(this);
-        findViewById(R.id.btnDisconnect).setOnClickListener(this);
 
-        // TODO: Create a sign-in options object
+        /*// TODO: Create a sign-in options object
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -136,13 +135,13 @@ public class SignIn extends AppCompatActivity implements
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+                .build();*/
 
         // TODO: Customize the sign in button
         SignInButton signInButton = (SignInButton) findViewById(R.id.btnSignIn);
         signInButton.setSize(SignInButton.SIZE_WIDE);
         signInButton.setColorScheme(SignInButton.COLOR_DARK);
-        signInButton.setScopes(gso.getScopeArray());
+//        signInButton.setScopes(gso.getScopeArray());
     }
 
     @Override
@@ -180,9 +179,9 @@ public class SignIn extends AppCompatActivity implements
             case R.id.btnSignOut:
                 signOut();
                 break;
-            case R.id.btnDisconnect:
+/*            case R.id.btnDisconnect:
                 disconnect();
-                break;
+                break;*/
         }
     }
 }
