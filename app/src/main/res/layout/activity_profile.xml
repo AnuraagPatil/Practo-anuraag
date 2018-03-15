@@ -73,7 +73,7 @@
                     android:id="@+id/txt_qulification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Qualification"
+                    android:text=" Qualification "
                     android:layout_margin="2dp"
                     android:textSize="18sp" />
 
