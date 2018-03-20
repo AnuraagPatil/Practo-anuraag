@@ -9,24 +9,35 @@
     tools:context="com.sourcekode.practo.practo.DrawerNavigationActivity"
     tools:showIn="@layout/app_bar_drawer_navigation">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_above="@id/bnv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:padding="@dimen/item_offset"
-            android:layout_centerHorizontal="true" />
+            app:layout_constraintBottom_toTopOf="@+id/bnv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bnv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
             android:background="@color/colorPrimary"
-            app:itemTextColor="#FFFFFF" />
+            app:itemTextColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

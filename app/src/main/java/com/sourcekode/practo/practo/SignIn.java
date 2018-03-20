@@ -41,13 +41,8 @@ public class SignIn extends AppCompatActivity implements
     private void startSignIn() {
         // TODO: Create sign-in intent and begin auth flow
 
-        Intent intent = new Intent(this, DrawerNavigationActivity.class);
-//        intent.putExtra(LOGINED_NAME, acct.getDisplayName());
-        intent.putExtra(LOGINED_NAME, "Login Name");
-        startActivity(intent);
-
-//        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-//        startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
 
     }
 
@@ -64,23 +59,12 @@ public class SignIn extends AppCompatActivity implements
                 });
     }
 
-/*    private void disconnect() {
-        // TODO: Disconnect this account completely and update UI
-        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(Status status) {
-                        m_tvStatus.setText(R.string.status_notconnected);
-                        m_tvEmail.setText("");
-                        m_tvDispName.setText("");
-                    }
-                });
-    }*/
 
-   /* private void signInResultHandler(GoogleSignInResult result) {
+    private void signInResultHandler(GoogleSignInResult result) {
+
         if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
-            m_tvStatus.setText(R.string.status_signedin);
+            m_tvStatus.setText("Signed In");
 
             sessionManager = new SessionManager(this);
             sessionManager.setFirsttime(true);
@@ -93,21 +77,25 @@ public class SignIn extends AppCompatActivity implements
                 intent.putExtra(LOGINED_NAME, acct.getDisplayName());
                 startActivity(intent);
 
+                finish();
+
             } catch (NullPointerException e) {
                 Log.d(TAG, "Error retrieving some account information");
             }
         } else {
             Status status = result.getStatus();
+
             int statusCode = status.getStatusCode();
+
             if (statusCode == GoogleSignInStatusCodes.SIGN_IN_CANCELLED) {
-                m_tvStatus.setText(R.string.status_signincancelled);
+                m_tvStatus.setText("Sign In Cancelled");
             } else if (statusCode == GoogleSignInStatusCodes.SIGN_IN_FAILED) {
-                m_tvStatus.setText(R.string.status_signinfail);
+                m_tvStatus.setText("Sign In Failed");
             } else {
-                m_tvStatus.setText(R.string.status_nullresult);
+                m_tvStatus.setText("Null Result");
             }
         }
-    }*/
+    }
 
     // *************************************************
     // -------- ANDROID ACTIVITY LIFECYCLE METHODS
@@ -124,7 +112,7 @@ public class SignIn extends AppCompatActivity implements
         findViewById(R.id.btnSignIn).setOnClickListener(this);
         findViewById(R.id.btnSignOut).setOnClickListener(this);
 
-        /*// TODO: Create a sign-in options object
+        // TODO: Create a sign-in options object
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -135,13 +123,13 @@ public class SignIn extends AppCompatActivity implements
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();*/
+                .build();
 
         // TODO: Customize the sign in button
         SignInButton signInButton = (SignInButton) findViewById(R.id.btnSignIn);
         signInButton.setSize(SignInButton.SIZE_WIDE);
-        signInButton.setColorScheme(SignInButton.COLOR_DARK);
-//        signInButton.setScopes(gso.getScopeArray());
+        signInButton.setColorScheme(SignInButton.COLOR_LIGHT);
+
     }
 
     @Override
@@ -153,10 +141,10 @@ public class SignIn extends AppCompatActivity implements
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-     /*   if (requestCode == RES_CODE_SIGN_IN) {
+        if (requestCode == RES_CODE_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             signInResultHandler(result);
-        }*/
+        }
     }
 
     // *************************************************
@@ -179,9 +167,6 @@ public class SignIn extends AppCompatActivity implements
             case R.id.btnSignOut:
                 signOut();
                 break;
-/*            case R.id.btnDisconnect:
-                disconnect();
-                break;*/
         }
     }
 }
