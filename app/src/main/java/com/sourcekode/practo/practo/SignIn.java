@@ -45,6 +45,7 @@ public class SignIn extends AppCompatActivity implements
         startActivityForResult(signInIntent, RES_CODE_SIGN_IN);*/
 
         Intent intent = new Intent(this, DrawerNavigationActivity.class);
+        intent.putExtra(LOGINED_NAME, "Your Name");
         startActivity(intent);
 
     }

@@ -16,12 +16,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.sourcekode.practo.practo.ModalData.Specialities;
 import com.sourcekode.practo.practo.SampleDataProvider.DataProvider;
 import com.sourcekode.practo.practo.util.ItemOffsetDecoration;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class DrawerNavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
