@@ -105,8 +105,8 @@ public class SignIn extends AppCompatActivity implements
 //        m_tvDispName = (TextView) findViewById(R.id.tvDispName);
 //        m_tvEmail = (TextView) findViewById(R.id.tvEmail);
 
-        findViewById(R.id.btnSignIn).setOnClickListener(this);
-        findViewById(R.id.btnSignOut).setOnClickListener(this);
+//        findViewById(R.id.btnSignIn).setOnClickListener(this);
+//        findViewById(R.id.btnSignOut).setOnClickListener(this);
 
         // TODO: Create a sign-in options object
         GoogleSignInOptions gso = new GoogleSignInOptions
@@ -160,9 +160,9 @@ public class SignIn extends AppCompatActivity implements
             case R.id.btnSignIn:
                 startSignIn();
                 break;
-            case R.id.btnSignOut:
-                signOut();
-                break;
+//            case R.id.btnSignOut:
+//                signOut();
+//                break;
         }
     }
 }
