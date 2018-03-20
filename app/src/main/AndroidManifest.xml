@@ -25,7 +25,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Doctors"></activity>
         <activity android:name=".Profile"></activity>
-        <activity android:name=".SignIn"></activity>
     </application>
 
 </manifest>

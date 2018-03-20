@@ -31,8 +31,6 @@ public class DrawerNavigationActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
-        String loginName = intent.getStringExtra(SignIn.LOGINED_NAME);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -45,7 +43,7 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
         View header = navigationView.getHeaderView(0);
         TextView textView = header.findViewById(R.id.name);
-        textView.setText(loginName);
+        textView.setText("your name");
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview_id);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,DataProvider.specialities);

@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     finish();
 
                 } catch (InterruptedException e) {
@@ -34,15 +34,15 @@ public class SplashActivity extends AppCompatActivity {
 
         t.start();
 
-        if (sessionManager.getFirstTime()) {
+     /*   if (sessionManager.getFirstTime()) {
             Intent mainIntent = new Intent(SplashActivity.this, SignIn.class);
             startActivity(mainIntent);
             finish();
 
-        } else {
+        } else {*/
             Intent mainIntent = new Intent(SplashActivity.this, DrawerNavigationActivity.class);
             startActivity(mainIntent);
             finish();
-        }
+//        }
     }
 }
