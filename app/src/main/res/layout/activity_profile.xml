@@ -41,7 +41,6 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:adjustViewBounds="true"
-                        android:background="@color/place_autocomplete_prediction_secondary_text"
                         android:cropToPadding="true"
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_launcher_foreground" />
