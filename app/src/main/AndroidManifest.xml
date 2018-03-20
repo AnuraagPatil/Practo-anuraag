@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sourcekode.practo.practo">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,8 +23,9 @@
             android:label="@string/title_activity_drawer_navigation"
             android:parentActivityName=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Doctors"></activity>
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".Doctors" />
+        <activity android:name=".Profile" />
+        <activity android:name=".Sign"></activity>
     </application>
 
 </manifest>
