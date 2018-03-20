@@ -34,9 +34,6 @@ public class SignIn extends AppCompatActivity implements
 
     private GoogleApiClient mGoogleApiClient;
 
-    private TextView m_tvStatus;
-    private TextView m_tvDispName;
-    private TextView m_tvEmail;
 
     private void startSignIn() {
         // TODO: Create sign-in intent and begin auth flow
@@ -56,9 +53,7 @@ public class SignIn extends AppCompatActivity implements
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
-                        m_tvStatus.setText(R.string.status_notsignedin);
-                        m_tvEmail.setText("");
-                        m_tvDispName.setText("");
+
                     }
                 });
     }
@@ -68,14 +63,11 @@ public class SignIn extends AppCompatActivity implements
 
         if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
-            m_tvStatus.setText("Signed In");
 
             sessionManager = new SessionManager(this);
             sessionManager.setFirsttime(true);
 
             try {
-                m_tvDispName.setText(acct.getDisplayName());
-                m_tvEmail.setText(acct.getEmail());
 
                 Intent intent = new Intent(this, DrawerNavigationActivity.class);
                 intent.putExtra(LOGINED_NAME, acct.getDisplayName());
@@ -92,11 +84,11 @@ public class SignIn extends AppCompatActivity implements
             int statusCode = status.getStatusCode();
 
             if (statusCode == GoogleSignInStatusCodes.SIGN_IN_CANCELLED) {
-                m_tvStatus.setText("Sign In Cancelled");
+//                m_tvStatus.setText("Sign In Cancelled");
             } else if (statusCode == GoogleSignInStatusCodes.SIGN_IN_FAILED) {
-                m_tvStatus.setText("Sign In Failed");
+//                m_tvStatus.setText("Sign In Failed");
             } else {
-                m_tvStatus.setText("Null Result");
+//                m_tvStatus.setText("Null Result");
             }
         }
     }
@@ -109,9 +101,9 @@ public class SignIn extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        m_tvStatus = (TextView) findViewById(R.id.tvStatus);
-        m_tvDispName = (TextView) findViewById(R.id.tvDispName);
-        m_tvEmail = (TextView) findViewById(R.id.tvEmail);
+//        m_tvStatus = (TextView) findViewById(R.id.tvStatus);
+//        m_tvDispName = (TextView) findViewById(R.id.tvDispName);
+//        m_tvEmail = (TextView) findViewById(R.id.tvEmail);
 
         findViewById(R.id.btnSignIn).setOnClickListener(this);
         findViewById(R.id.btnSignOut).setOnClickListener(this);
