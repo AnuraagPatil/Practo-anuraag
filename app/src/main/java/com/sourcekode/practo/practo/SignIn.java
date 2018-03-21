@@ -67,6 +67,7 @@ public class SignIn extends AppCompatActivity implements
                 intent.putExtra(PROFILE_PIC, acct.getPhotoUrl().toString());
                 startActivity(intent);
 
+                finish();
 
                 m_tvStatus.setText(R.string.status_signedin);
 

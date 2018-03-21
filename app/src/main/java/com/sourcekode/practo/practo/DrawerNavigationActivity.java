@@ -59,6 +59,7 @@ public class DrawerNavigationActivity extends AppCompatActivity
         try {
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
             imageView.setImageBitmap(bitmap);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
