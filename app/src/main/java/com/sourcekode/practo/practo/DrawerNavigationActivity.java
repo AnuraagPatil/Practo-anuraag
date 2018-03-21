@@ -64,10 +64,10 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
                 switch (item.getItemId()){
                     case R.id.sort:
-                        Toast.makeText(DrawerNavigationActivity.this, "Sort Clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DrawerNavigationActivity.this, "Sort is Clicked", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.filter:
-                        Toast.makeText(DrawerNavigationActivity.this, "Filter Clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DrawerNavigationActivity.this, "Filter is Clicked", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
