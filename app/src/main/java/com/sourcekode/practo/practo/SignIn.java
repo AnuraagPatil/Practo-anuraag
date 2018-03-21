@@ -1,10 +1,7 @@
 package com.sourcekode.practo.practo;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -32,18 +29,11 @@ public class SignIn extends AppCompatActivity implements
     public static final String PROFILE_PIC = "profile_pic";
     private static final String TAG = "SIGNIN_EXERCISE";
     private static final int RES_CODE_SIGN_IN = 1001;
+    static GoogleApiClient mGoogleApiClient;
+    private static TextView m_tvStatus;
     SessionManager sessionManager;
-    private GoogleApiClient mGoogleApiClient;
-    private TextView m_tvStatus;
 
-
-    private void startSignIn() {
-        // TODO: Create sign-in intent and begin auth flow
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
-    }
-
-    private void signOut() {
+    public static void signOut() {
         // TODO: Sign the user out and update the UI
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
@@ -53,9 +43,13 @@ public class SignIn extends AppCompatActivity implements
 
                     }
                 });
-
     }
 
+    private void startSignIn() {
+        // TODO: Create sign-in intent and begin auth flow
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RES_CODE_SIGN_IN);
+    }
 
     private void signInResultHandler(GoogleSignInResult result) {
 
@@ -72,8 +66,6 @@ public class SignIn extends AppCompatActivity implements
                 intent.putExtra(EMAIL_ID, acct.getEmail());
                 intent.putExtra(PROFILE_PIC, acct.getPhotoUrl().toString());
                 startActivity(intent);
-
-                finish();
 
                 m_tvStatus.setText(R.string.status_signedin);
 

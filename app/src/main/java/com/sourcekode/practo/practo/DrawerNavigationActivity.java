@@ -2,6 +2,7 @@ package com.sourcekode.practo.practo;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,16 +21,40 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.sourcekode.practo.practo.SampleDataProvider.DataProvider;
 import com.sourcekode.practo.practo.util.ItemOffsetDecoration;
 
 import java.io.IOException;
 
+import static com.sourcekode.practo.practo.SignIn.EMAIL_ID;
+import static com.sourcekode.practo.practo.SignIn.LOGINED_NAME;
+import static com.sourcekode.practo.practo.SignIn.PROFILE_PIC;
+
 
 public class DrawerNavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     final Context context = this;
+
+    GoogleApiClient mGoogleApiClient;
+
+    @Override
+    protected void onStart() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +67,9 @@ public class DrawerNavigationActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String userName = getIntent().getStringExtra(SignIn.LOGINED_NAME);
-        String email = getIntent().getStringExtra(SignIn.EMAIL_ID);
-        Uri uri = Uri.parse(getIntent().getStringExtra(SignIn.EMAIL_ID));
+        String userName = getIntent().getStringExtra(LOGINED_NAME);
+        String email = getIntent().getStringExtra(EMAIL_ID);
+        Uri uri = Uri.parse(getIntent().getStringExtra(EMAIL_ID));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -149,9 +174,71 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
         } else if (id == R.id.share) {
 
-        }
-        else if (id == R.id.about_us) {
+        } else if (id == R.id.about_us) {
 
+        } else if (id == R.id.sign_out) {
+
+
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                    new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(Status status) {
+                            // ...
+                            Toast.makeText(getApplicationContext(), "Logged Out", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), DrawerNavigationActivity.class);
+                            intent.putExtra(LOGINED_NAME, "");
+                            intent.putExtra(EMAIL_ID, "");
+                            intent.putExtra(PROFILE_PIC, "");
+                            startActivity(intent);
+                        }
+                    });
+
+            /*Auth.GoogleSignInApi.signOut(SignIn.mGoogleApiClient);
+
+            Intent intent = new Intent(DrawerNavigationActivity.this,SignIn.class);
+            startActivity(intent);
+*/
+            /*
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    SignIn.signOut();
+                    finish();
+                }
+            },2000);
+
+            new AsyncTask() {
+
+                @Override
+                protected void onPreExecute() {
+                    Intent intent = new Intent(DrawerNavigationActivity.this,SignIn.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                protected Object doInBackground(Object[] objects) {
+
+                    Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(2000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                    t.start();
+
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Object o) {
+                    SignIn.signOut();
+                }
+            };*/
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
