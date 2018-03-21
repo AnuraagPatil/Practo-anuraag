@@ -2,6 +2,8 @@ package com.sourcekode.practo.practo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sourcekode.practo.practo.SampleDataProvider.DataProvider;
 import com.sourcekode.practo.practo.util.ItemOffsetDecoration;
@@ -27,6 +30,9 @@ public class DrawerNavigationActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_navigation);
+
+        final BottomNavigationView bottomNavigationView  = (BottomNavigationView)findViewById(R.id.bottomnav_view);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,6 +57,46 @@ public class DrawerNavigationActivity extends AppCompatActivity
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(this, R.dimen.item_offset);
         recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setAdapter(myAdapter);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.sort:
+                        Toast.makeText(DrawerNavigationActivity.this, "Sort Clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.filter:
+                        Toast.makeText(DrawerNavigationActivity.this, "Sort Clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
+        {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy)
+            {
+                if (dy > 0 ||dy<0 && bottomNavigationView.isShown())
+                {
+                    bottomNavigationView.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState)
+            {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE)
+                {
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+                }
+
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+
     }
 
     @Override
