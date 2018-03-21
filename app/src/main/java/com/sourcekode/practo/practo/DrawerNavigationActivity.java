@@ -1,19 +1,17 @@
 package com.sourcekode.practo.practo;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sourcekode.practo.practo.SampleDataProvider.DataProvider;
@@ -31,6 +29,8 @@ public class DrawerNavigationActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        String userName = getIntent().getStringExtra(SignIn.LOGINED_NAME);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,7 +43,7 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
         View header = navigationView.getHeaderView(0);
         TextView textView = header.findViewById(R.id.name);
-        textView.setText("your name");
+        textView.setText(userName);
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview_id);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,DataProvider.specialities);
