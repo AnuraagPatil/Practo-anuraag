@@ -115,7 +115,7 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
             alertDialogBuilder.setTitle("Thanks for using this app");
 
-            alertDialogBuilder.setMessage("Would you like to try more")
+            alertDialogBuilder.setMessage("Would you like to try more!!")
                     .setCancelable(false)
                     .setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int id){
