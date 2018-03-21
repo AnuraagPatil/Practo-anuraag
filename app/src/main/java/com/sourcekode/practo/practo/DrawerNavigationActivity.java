@@ -1,9 +1,12 @@
 package com.sourcekode.practo.practo;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
@@ -25,6 +28,8 @@ import com.sourcekode.practo.practo.util.ItemOffsetDecoration;
 
 public class DrawerNavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    final Context context=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +69,10 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
                 switch (item.getItemId()){
                     case R.id.sort:
-                        Toast.makeText(DrawerNavigationActivity.this, "Sort is Clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DrawerNavigationActivity.this, "Sort Clicked", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.filter:
-                        Toast.makeText(DrawerNavigationActivity.this, "Filter is Clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DrawerNavigationActivity.this, "Filter Clicked", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
@@ -105,9 +110,35 @@ public class DrawerNavigationActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(context);
+
+            alertDialogBuilder.setTitle("Thanks for using this app");
+
+            alertDialogBuilder.setMessage("Would you like to try more")
+                    .setCancelable(false)
+                    .setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int id){
+                            DrawerNavigationActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+
+
+
         }
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
