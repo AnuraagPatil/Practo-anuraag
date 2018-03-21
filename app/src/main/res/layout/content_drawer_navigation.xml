@@ -17,24 +17,22 @@
             android:id="@+id/recyclerview_id"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_above="@id/bnv"
+            android:layout_above="@id/bottomnav_view"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:padding="@dimen/item_offset"
-            app:layout_constraintBottom_toTopOf="@+id/bnv"
+            app:layout_constraintBottom_toTopOf="@+id/bottomnav_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bnv"
+            android:id="@+id/bottomnav_view"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/colorPrimary"
-            app:itemTextColor="#FFFFFF"
+            android:layout_height="50dp"
+            android:background="#fff"
+            app:itemTextColor="#000"
+            app:menu="@menu/bottom_menu"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
