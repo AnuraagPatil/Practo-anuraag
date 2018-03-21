@@ -18,7 +18,7 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     public static final String SPECILITY_KEY = "specility_key";
     private Context mContext ;
-    private List<Specialities> mData ;
+    private List<Specialities> mData;
 
     public RecyclerViewAdapter(Context mContext, List<Specialities> mData) {
         this.mContext = mContext;
@@ -72,6 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mView = itemView;
             doctor_title = (TextView)itemView.findViewById(R.id.title_id);
             doctor_img = (ImageView) itemView.findViewById(R.id.img_id);
+
         }
     }
 

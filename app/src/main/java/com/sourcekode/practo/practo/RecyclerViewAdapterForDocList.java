@@ -20,7 +20,7 @@ import java.util.List;
 public class RecyclerViewAdapterForDocList extends RecyclerView.Adapter<RecyclerViewAdapterForDocList.MyViewHolder> {
 
     private Context mContext ;
-    private List<DoctorsData> mData ;
+    private List<DoctorsData> mData;
 
     public RecyclerViewAdapterForDocList(Context mContext, List<DoctorsData> mData) {
         this.mContext = mContext;
