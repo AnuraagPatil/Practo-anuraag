@@ -1,7 +1,10 @@
 package com.sourcekode.practo.practo;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +36,7 @@ public class SignIn extends AppCompatActivity implements
     private GoogleApiClient mGoogleApiClient;
     private TextView m_tvStatus;
 
+
     private void startSignIn() {
         // TODO: Create sign-in intent and begin auth flow
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -49,7 +53,9 @@ public class SignIn extends AppCompatActivity implements
 
                     }
                 });
+
     }
+
 
     private void signInResultHandler(GoogleSignInResult result) {
 
@@ -160,4 +166,6 @@ public class SignIn extends AppCompatActivity implements
                 break;
         }
     }
+
+
 }
