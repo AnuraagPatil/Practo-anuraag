@@ -26,6 +26,7 @@ public class SignIn extends AppCompatActivity implements
 
     public static final String LOGINED_NAME = "login_id";
     public static final String EMAIL_ID = "email_id";
+    public static final String PROFILE_PIC = "profile_pic";
     private static final String TAG = "SIGNIN_EXERCISE";
     private static final int RES_CODE_SIGN_IN = 1001;
     SessionManager sessionManager;
@@ -63,6 +64,7 @@ public class SignIn extends AppCompatActivity implements
                 Intent intent = new Intent(this, DrawerNavigationActivity.class);
                 intent.putExtra(LOGINED_NAME, acct.getDisplayName());
                 intent.putExtra(EMAIL_ID, acct.getEmail());
+                intent.putExtra(PROFILE_PIC, acct.getPhotoUrl().toString());
                 startActivity(intent);
 
 

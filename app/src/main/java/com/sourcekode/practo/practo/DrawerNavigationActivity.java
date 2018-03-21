@@ -1,6 +1,9 @@
 package com.sourcekode.practo.practo;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,10 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sourcekode.practo.practo.SampleDataProvider.DataProvider;
 import com.sourcekode.practo.practo.util.ItemOffsetDecoration;
+
+import java.io.IOException;
 
 
 public class DrawerNavigationActivity extends AppCompatActivity
@@ -30,7 +36,8 @@ public class DrawerNavigationActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         String userName = getIntent().getStringExtra(SignIn.LOGINED_NAME);
-
+        String email = getIntent().getStringExtra(SignIn.EMAIL_ID);
+        Uri uri = Uri.parse(getIntent().getStringExtra(SignIn.EMAIL_ID));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,8 +49,20 @@ public class DrawerNavigationActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View header = navigationView.getHeaderView(0);
-        TextView textView = header.findViewById(R.id.name);
-        textView.setText(userName);
+        TextView textView_name = header.findViewById(R.id.name);
+        TextView textView_email = header.findViewById(R.id.email);
+        ImageView imageView = header.findViewById(R.id.profile_image);
+
+        textView_name.setText(userName);
+        textView_email.setText(email);
+
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+            imageView.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview_id);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,DataProvider.specialities);
