@@ -6,14 +6,13 @@ import android.util.Log;
 
 public class SessionManager {
 
-    int PRIVATE_MODE = 0;
     public static final String TAG = "SessionManager";
     private static final String FIRSTTIME = "firsttime";
     private static final String PREF_NAME = "Practo";
-
+    static SharedPreferences.Editor editor;
+    int PRIVATE_MODE = 0;
     Context mContext;
     SharedPreferences pref;
-    static SharedPreferences.Editor editor;
 
     public SessionManager(Context context) {
         mContext = context;
@@ -28,7 +27,7 @@ public class SessionManager {
     }
 
     public boolean getFirstTime() {
-        return pref.getBoolean(FIRSTTIME, true);
+        return pref.getBoolean(FIRSTTIME, false);
     }
 
 }

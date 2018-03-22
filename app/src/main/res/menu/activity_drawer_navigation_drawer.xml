@@ -61,6 +61,11 @@
                 android:id="@+id/sign_out"
                 android:title="Sign Out" />
 
+            <item
+                android:id="@+id/sign_in"
+                android:title="Sign In"
+                android:visible="false" />
+
         </group>
 
 

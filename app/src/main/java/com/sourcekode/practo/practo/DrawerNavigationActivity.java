@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,9 +41,11 @@ import static com.sourcekode.practo.practo.SignIn.PROFILE_PIC;
 
 public class DrawerNavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "DrawerActivity";
     final Context context = this;
 
     GoogleApiClient mGoogleApiClient;
+    SessionManager sessionManager;
 
     @Override
     protected void onStart() {
@@ -62,6 +65,17 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_drawer_navigation);
 
+        sessionManager = new SessionManager(getApplicationContext());
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        View header = navigationView.getHeaderView(0);
+        TextView textView_name = header.findViewById(R.id.name);
+        TextView textView_email = header.findViewById(R.id.email);
+        ImageView imageView = header.findViewById(R.id.profile_image);
+
+
+        navigationView.setNavigationItemSelectedListener(this);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -69,7 +83,27 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
         String userName = getIntent().getStringExtra(LOGINED_NAME);
         String email = getIntent().getStringExtra(EMAIL_ID);
-        Uri uri = Uri.parse(getIntent().getStringExtra(EMAIL_ID));
+
+        String uriString = getIntent().getStringExtra(PROFILE_PIC);
+
+        if (uriString.isEmpty()) {
+
+            Toast.makeText(context, "Image not found", Toast.LENGTH_SHORT).show();
+
+            Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
+
+        } else {
+
+            Uri uri = Uri.parse(uriString);
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                imageView.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -77,29 +111,14 @@ public class DrawerNavigationActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        View header = navigationView.getHeaderView(0);
-        TextView textView_name = header.findViewById(R.id.name);
-        TextView textView_email = header.findViewById(R.id.email);
-        ImageView imageView = header.findViewById(R.id.profile_image);
 
         textView_name.setText(userName);
         textView_email.setText(email);
 
-        try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-            imageView.setImageBitmap(bitmap);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview_id);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,DataProvider.specialities);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_id);
+        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, DataProvider.specialities);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(this, R.dimen.item_offset);
         recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setAdapter(myAdapter);
@@ -158,7 +177,7 @@ public class DrawerNavigationActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(final MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -184,61 +203,35 @@ public class DrawerNavigationActivity extends AppCompatActivity
                         @Override
                         public void onResult(Status status) {
                             // ...
+
+                            sessionManager.setFirsttime(true);
+
                             Toast.makeText(getApplicationContext(), "Logged Out", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), DrawerNavigationActivity.class);
-                            intent.putExtra(LOGINED_NAME, "");
-                            intent.putExtra(EMAIL_ID, "");
-                            intent.putExtra(PROFILE_PIC, "");
-                            startActivity(intent);
+//
+                            NavigationView navigationView = findViewById(R.id.nav_view);
+
+                            View header = navigationView.getHeaderView(0);
+                            TextView textView_name = header.findViewById(R.id.name);
+                            TextView textView_email = header.findViewById(R.id.email);
+                            ImageView imageView = header.findViewById(R.id.profile_image);
+
+                            textView_name.setText("not signed in");
+                            textView_email.setText("email");
+
+                            item.setVisible(false);
+
+                            Menu menu = navigationView.getMenu();
+                            MenuItem signOut = menu.findItem(R.id.sign_in);
+                            signOut.setVisible(true);
+
                         }
                     });
 
-            /*Auth.GoogleSignInApi.signOut(SignIn.mGoogleApiClient);
+        } else if (id == R.id.sign_in) {
 
-            Intent intent = new Intent(DrawerNavigationActivity.this,SignIn.class);
+            Intent intent = new Intent(this, SignIn.class);
             startActivity(intent);
-*/
-            /*
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    SignIn.signOut();
-                    finish();
-                }
-            },2000);
-
-            new AsyncTask() {
-
-                @Override
-                protected void onPreExecute() {
-                    Intent intent = new Intent(DrawerNavigationActivity.this,SignIn.class);
-                    startActivity(intent);
-                }
-
-                @Override
-                protected Object doInBackground(Object[] objects) {
-
-                    Thread t = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Thread.sleep(2000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-
-                    t.start();
-
-                    return null;
-                }
-
-                @Override
-                protected void onPostExecute(Object o) {
-                    SignIn.signOut();
-                }
-            };*/
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

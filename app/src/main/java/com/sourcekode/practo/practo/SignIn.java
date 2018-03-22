@@ -16,7 +16,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.api.Status;
 
@@ -33,17 +32,6 @@ public class SignIn extends AppCompatActivity implements
     private static TextView m_tvStatus;
     SessionManager sessionManager;
 
-    public static void signOut() {
-        // TODO: Sign the user out and update the UI
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(Status status) {
-                        m_tvStatus.setText(R.string.status_notsignedin);
-
-                    }
-                });
-    }
 
     private void startSignIn() {
         // TODO: Create sign-in intent and begin auth flow
@@ -58,16 +46,25 @@ public class SignIn extends AppCompatActivity implements
             GoogleSignInAccount acct = result.getSignInAccount();
 
             sessionManager = new SessionManager(this);
-            sessionManager.setFirsttime(true);
+            sessionManager.setFirsttime(false);
 
             try {
                 Intent intent = new Intent(this, DrawerNavigationActivity.class);
                 intent.putExtra(LOGINED_NAME, acct.getDisplayName());
                 intent.putExtra(EMAIL_ID, acct.getEmail());
-                intent.putExtra(PROFILE_PIC, acct.getPhotoUrl().toString());
+
+                Log.d(TAG, "signInResultHandler: " + acct.getPhotoUrl());
+
+                if (acct.getPhotoUrl().equals(null) || acct.getPhotoUrl().toString().equalsIgnoreCase("")) {
+                    intent.putExtra(PROFILE_PIC, "");
+                } else {
+                    intent.putExtra(PROFILE_PIC, acct.getPhotoUrl().toString());
+                }
                 startActivity(intent);
 
                 m_tvStatus.setText(R.string.status_signedin);
+
+                finish();
 
             } catch (NullPointerException e) {
                 Log.d(TAG, "Error retrieving some account information");
@@ -99,7 +96,6 @@ public class SignIn extends AppCompatActivity implements
         m_tvStatus = (TextView) findViewById(R.id.tvStatus);
 
         findViewById(R.id.btnSignIn).setOnClickListener(this);
-        findViewById(R.id.btnSignOut).setOnClickListener(this);
 
         // TODO: Create a sign-in options object
         GoogleSignInOptions gso = new GoogleSignInOptions
@@ -153,11 +149,6 @@ public class SignIn extends AppCompatActivity implements
             case R.id.btnSignIn:
                 startSignIn();
                 break;
-            case R.id.btnSignOut:
-                signOut();
-                break;
         }
     }
-
-
 }
